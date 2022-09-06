@@ -1,10 +1,11 @@
-import { View, Text, Button } from 'react-native';
 import React from 'react';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
-export default function ProfileScreen({ navigation }) {
+
+export default function Account({ navigation }) {
     return (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-            <Text style={{}}>Welcome to Profile Screen</Text>
+            <Text>Account</Text>
             {/* <View>
                 <Button
                     title="Go To ProfileScreen"
@@ -32,3 +33,5 @@ export default function ProfileScreen({ navigation }) {
         </View>
     );
 }
+
+const styles = StyleSheet.create({});
