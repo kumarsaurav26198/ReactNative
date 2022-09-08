@@ -8,6 +8,7 @@ import {
     Button,
     StyleSheet
 } from 'react-native';
+import CustomButton from '../../components/common/CustomButton.js';
 import { getProduct } from '../../services/ProductsService.js';
 import { CartContext } from '../../services/CartContext';
 export default function ProductDetails({ route }) {
@@ -15,14 +16,14 @@ export default function ProductDetails({ route }) {
     const { productId } = route.params;
     const [product, setProduct] = useState({});
 
-    const { addItemToCart } = useContext(CartContext);
+    // const { addItemToCart } = useContext(CartContext);
 
     useEffect(() => {
         setProduct(getProduct(productId));
     });
 
     function onAddToCart() {
-        addItemToCart(product.id);
+        // addItemToCart(product.id);
     }
     return (
         <SafeAreaView>
@@ -35,10 +36,7 @@ export default function ProductDetails({ route }) {
                     <Text style={styles.name}>{product.name}</Text>
                     <Text style={styles.price}>$ {product.price}</Text>
                     <Text style={styles.description}>{product.description}</Text>
-                    <Button
-                        onPress={onAddToCart}
-                        title="Add to cart"
-                    />
+                    <CustomButton title={"Add Too cart"} onPress={onAddToCart} />
                 </View>
             </ScrollView>
         </SafeAreaView>

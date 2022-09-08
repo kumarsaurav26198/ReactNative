@@ -15,7 +15,7 @@ function SplashScreenImage({ navigation }) {
         navigation.replace('ProductScreen');
     }, 4000);
     return (
-        <ImageBackground style={{ flex: 1 }} source={require("../assets/splash.png")} >
+        <ImageBackground style={{ flex: 1 }} source={require("../assets/products/car-101.jpg")} >
         </ImageBackground>
     );
 }
@@ -38,7 +38,7 @@ function AppNavigation() {
                 <Stack.Screen
                     name="ProductDetails"
                     component={ProductDetails}
-                    options={{ headerShown: false }}
+                    options={{ headerShown: true }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
