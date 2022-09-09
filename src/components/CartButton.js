@@ -1,7 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Linking } from 'react-native';
 import React from 'react';
 
-const CustomButton = ({ onPress, title, onClick }) => {
+
+const CartButton = ({ onPress, title, onClick }) => {
     return (
         <TouchableOpacity onPress={onPress} onClick={onClick} style={styles.appButtonContainer}>
             <Text style={styles.appButtonText}>{title}</Text>
@@ -9,7 +10,7 @@ const CustomButton = ({ onPress, title, onClick }) => {
     );
 };
 
-export default CustomButton;
+export default CartButton;
 
 const styles = StyleSheet.create({
     appButtonContainer: {

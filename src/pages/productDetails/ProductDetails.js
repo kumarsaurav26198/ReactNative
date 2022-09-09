@@ -11,19 +11,20 @@ import {
 import CustomButton from '../../components/common/CustomButton.js';
 import { getProduct } from '../../services/ProductsService.js';
 import { CartContext } from '../../services/CartContext';
-export default function ProductDetails({ route }) {
+export default function ProductDetails({ route, navigation }) {
 
     const { productId } = route.params;
     const [product, setProduct] = useState({});
 
-    // const { addItemToCart } = useContext(CartContext);
+    const { addItemToCart } = useContext(CartContext);
 
     useEffect(() => {
         setProduct(getProduct(productId));
     });
 
     function onAddToCart() {
-        // addItemToCart(product.id);
+        addItemToCart(product.id);
+        navigation.navigate('ShoppingCartScreen');
     }
     return (
         <SafeAreaView>
