@@ -1,22 +1,23 @@
-import { StyleSheet, Text, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 
 
-const CartButton = ({ onPress, title, onClick }) => {
+const Cart = ({ onPress, onClick }) => {
+
     return (
         <TouchableOpacity onPress={onPress} onClick={onClick} style={styles.appButtonContainer}>
-            <Text style={styles.appButtonText}>{title}</Text>
+            <Text style={styles.appButtonText} onPress={onPress}>{ }</Text>
         </TouchableOpacity>
     );
 };
 
-export default CartButton;
+export default Cart;
 
 const styles = StyleSheet.create({
     appButtonContainer: {
         elevation: 8,
         backgroundColor: "#009688",
-        borderRadius: 10,
+        borderRadius: 50,
         paddingVertical: 7,
         paddingHorizontal: 12
     },

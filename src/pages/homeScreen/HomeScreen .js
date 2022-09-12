@@ -17,7 +17,7 @@ export default function HomeScreen({ navigation }) {
                     <Button>Ok</Button>
                 </Card.Actions>
             </Card> */}
-            {/* <View>
+            <View>
                 <Button
                     title="Go To ProfileScreen"
                     onPress={() => navigation.navigate('ProfileScreen')}
@@ -40,7 +40,7 @@ export default function HomeScreen({ navigation }) {
                     title="Go To Social"
                     onPress={() => navigation.navigate('Social')}
                 />
-            </View> */}
+            </View>
         </View>
     );
 }

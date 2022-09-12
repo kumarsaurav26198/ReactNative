@@ -8,11 +8,8 @@ import ProductDetails from '../pages/productDetails/ProductDetails';
 import ShoppingCartScreen from '../pages/shoppingCartScreen/ShoppingCartScreen';
 import { CartProvider } from '../services/CartContext';
 import CartIcon from '../components/CartIcon';
-import IconCart from '../components/IconCart';
 import Payment from '../pages/payment/Payment';
-import { Button } from 'react-native-paper';
-import CustomButton from '../components/common/CustomButton';
-import CartButton from '../components/CartButton';
+import Cart from '../components/Cart';
 
 
 
@@ -44,13 +41,11 @@ function AppNavigation() {
                     <Stack.Screen
                         name="ProductScreen"
                         component={ProductScreen}
-                        options={() => ({
+                        options={({ navigation }) => ({
                             title: 'Products',
                             headerTitleStyle: styles.headerTitle,
-                            // headerRight: () => <CartIcon />
-                            // headerRight: () => <Button onPress={goToCart()}>Goo Too Cart</Button>
-                            // headerRight: () => <CustomButton title="Cart" onPress={() => navigate('ShoppingCartScreen')} />
-                            headerRight: () => <CartButton title="Cart" />
+                            headerRight: () => <Cart title="Cart" onPress={() => navigation.navigate("ShoppingCartScreen")} />
+
 
                         })}
 
@@ -58,10 +53,10 @@ function AppNavigation() {
                     <Stack.Screen
                         name="ProductDetails"
                         component={ProductDetails}
-                        options={() => ({
+                        options={({ navigation }) => ({
                             title: 'Product Details',
                             headerTitleStyle: styles.headerTitle,
-                            headerRight: () => <CustomButton title="Cart" />
+                            headerRight: () => <Cart title="Cart" onPress={() => navigation.navigate("ShoppingCartScreen")} />
                         })}
 
                     />
@@ -79,6 +74,8 @@ function AppNavigation() {
                         options={() => ({
                             title: 'Payment',
                             headerTitleStyle: styles.headerTitle,
+                            headerRight: () => <Cart title="Cart" />
+
                         })}
                     />
                 </Stack.Navigator>
@@ -93,8 +90,6 @@ const styles = StyleSheet.create({
         fontSize: 20
     }
 });
-function goToCart({ navigation }) {
-    navigation.navigate("ShoppingCartScreen");
-}
+
 
 

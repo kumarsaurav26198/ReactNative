@@ -24,7 +24,7 @@ export default function ProductDetails({ route, navigation }) {
 
     function onAddToCart() {
         addItemToCart(product.id);
-        navigation.navigate('ShoppingCartScreen');
+        // navigation.navigate('ShoppingCartScreen');
     }
     return (
         <SafeAreaView>
