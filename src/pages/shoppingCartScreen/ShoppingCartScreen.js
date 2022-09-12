@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
 import CustomButton from '../../components/common/CustomButton';
+import PayCheckout from '../../components/PayCheckout';
 import { CartContext } from '../../services/CartContext';
 
 export default function ShoppingCartScreen({ navigation }) {
@@ -39,7 +40,8 @@ export default function ShoppingCartScreen({ navigation }) {
 
             />
             <View styles={styles.paymentButton}>
-                <CustomButton title={"GO FOR PAYMENT"} onPress={() => navigation.navigate("Payment")} />
+                {/* <CustomButton title={"GO FOR PAYMENT"} onPress={() => navigation.navigate("Payment")} /> */}
+                <PayCheckout />
             </View>
 
         </>

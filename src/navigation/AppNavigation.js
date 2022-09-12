@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, StyleSheet, ImageBackground, Alert } from 'react-native';
+import { StyleSheet, ImageBackground } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import BottomTabNavigation from './BottomTabNavigation';
@@ -7,12 +7,8 @@ import ProductScreen from '../pages/productScreen/ProductScreen';
 import ProductDetails from '../pages/productDetails/ProductDetails';
 import ShoppingCartScreen from '../pages/shoppingCartScreen/ShoppingCartScreen';
 import { CartProvider } from '../services/CartContext';
-import CartIcon from '../components/CartIcon';
 import Payment from '../pages/payment/Payment';
 import Cart from '../components/Cart';
-
-
-
 
 
 const Stack = createNativeStackNavigator();
@@ -45,10 +41,7 @@ function AppNavigation() {
                             title: 'Products',
                             headerTitleStyle: styles.headerTitle,
                             headerRight: () => <Cart title="Cart" onPress={() => navigation.navigate("ShoppingCartScreen")} />
-
-
                         })}
-
                     />
                     <Stack.Screen
                         name="ProductDetails"
@@ -58,7 +51,6 @@ function AppNavigation() {
                             headerTitleStyle: styles.headerTitle,
                             headerRight: () => <Cart title="Cart" onPress={() => navigation.navigate("ShoppingCartScreen")} />
                         })}
-
                     />
                     <Stack.Screen
                         name="ShoppingCartScreen"
@@ -75,7 +67,6 @@ function AppNavigation() {
                             title: 'Payment',
                             headerTitleStyle: styles.headerTitle,
                             headerRight: () => <Cart title="Cart" />
-
                         })}
                     />
                 </Stack.Navigator>
@@ -83,7 +74,6 @@ function AppNavigation() {
         </CartProvider>
     );
 }
-
 export default AppNavigation;
 const styles = StyleSheet.create({
     headerTitle: {
