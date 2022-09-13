@@ -12,7 +12,7 @@ export default function PayCheckout() {
                     image: 'https://i.imgur.com/3g7nmJC.jpg',
                     currency: 'INR',
                     key: 'rzp_test_GNnVef5lCY1FjE',
-                    amount: '10000',
+                    amount: '100',
                     name: 'Saurav Kumar',
                     // order_id: 'order_DslnoIgkIDL8Zt',
                     //Replace this with an order_id created using Orders API.

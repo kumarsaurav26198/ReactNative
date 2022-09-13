@@ -24,7 +24,9 @@ export default function ProductDetails({ route, navigation }) {
 
     function onAddToCart() {
         addItemToCart(product.id);
-        // navigation.navigate('ShoppingCartScreen');
+    }
+    function setLoaction() {
+        navigation.navigate('LoactionScreen');
     }
     return (
         <SafeAreaView>
@@ -35,9 +37,15 @@ export default function ProductDetails({ route, navigation }) {
                 />
                 <View style={styles.infoContainer}>
                     <Text style={styles.name}>{product.name}</Text>
-                    <Text style={styles.price}>$ {product.price}</Text>
+                    <Text style={styles.price}>Rs..  {product.price} ₹</Text>
                     <Text style={styles.description}>{product.description}</Text>
-                    <CustomButton title={"Add Too cart"} onPress={onAddToCart} />
+                    <View style={styles.buttonConatainer}>
+                        <CustomButton title={"Add Too cart"} onPress={onAddToCart} />
+                    </View>
+                    <View style={styles.buttonConatainer}>
+                        <CustomButton title={" set Loaction"} onPress={setLoaction} />
+                    </View>
+
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -80,4 +88,7 @@ const styles = StyleSheet.create({
         color: '#787878',
         marginBottom: 16,
     },
+    buttonConatainer: {
+        margin: 10,
+    }
 });

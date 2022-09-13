@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
-import CustomButton from '../../components/common/CustomButton';
+import { View, Text, FlatList, StyleSheet } from 'react-native';
 import PayCheckout from '../../components/PayCheckout';
 import { CartContext } from '../../services/CartContext';
 
-export default function ShoppingCartScreen({ navigation }) {
+export default function ShoppingCartScreen() {
 
     const { items, getItemsCount, getTotalPrice } = useContext(CartContext);
 
@@ -16,7 +15,7 @@ export default function ShoppingCartScreen({ navigation }) {
         return (
             <View style={styles.cartLineTotal}>
                 <Text style={[styles.lineLeft, styles.lineTotal]}>Total</Text>
-                <Text style={styles.lineRight}>$ {total}</Text>
+                <Text style={styles.lineRight}>₹ {total} </Text>
             </View>
         );
     }
@@ -24,7 +23,7 @@ export default function ShoppingCartScreen({ navigation }) {
         return (
             <View style={styles.cartLine}>
                 <Text style={styles.lineLeft}>{item.product.name} x {item.qty}</Text>
-                <Text style={styles.lineRight}>$ {item.totalPrice}</Text>
+                <Text style={styles.lineRight}>₹ {item.totalPrice}</Text>
             </View>
         );
     }

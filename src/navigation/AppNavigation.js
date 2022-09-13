@@ -9,6 +9,7 @@ import ShoppingCartScreen from '../pages/shoppingCartScreen/ShoppingCartScreen';
 import { CartProvider } from '../services/CartContext';
 import Payment from '../pages/payment/Payment';
 import Cart from '../components/Cart';
+import LoactionScreen from '../pages/loactionScreen/LoactionScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -53,6 +54,14 @@ function AppNavigation() {
                         })}
                     />
                     <Stack.Screen
+                        name="LoactionScreen"
+                        component={LoactionScreen}
+                        options={() => ({
+                            title: 'Select Loaction',
+                            headerTitleStyle: styles.headerTitle,
+                        })}
+                    />
+                    <Stack.Screen
                         name="ShoppingCartScreen"
                         component={ShoppingCartScreen}
                         options={() => ({
@@ -60,6 +69,7 @@ function AppNavigation() {
                             headerTitleStyle: styles.headerTitle,
                         })}
                     />
+
                     <Stack.Screen
                         name="Payment"
                         component={Payment}
