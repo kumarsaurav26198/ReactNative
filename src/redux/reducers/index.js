@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { authReducer } from "./authReducer";
 import { productsReducer, selectedProductsReducer } from "./productsReducer";
 
 function counter(state = 0, action) {
@@ -16,6 +17,7 @@ const reducers = combineReducers({
   counter,
   allProducts: productsReducer,
   product: selectedProductsReducer,
+  auth: authReducer
 
 });
 export default reducers;
