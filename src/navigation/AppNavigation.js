@@ -13,6 +13,7 @@ import LoactionScreen from '../pages/loactionScreen/LoactionScreen';
 import WelcomeScreen from '../beforeLogIn/screens/WelcomeScreen';
 import LoginScreen from '../beforeLogIn/screens/LoginScreen';
 import SignupScreen from '../beforeLogIn/screens/SignupScreen';
+import HomeScreen2 from '../beforeLogIn/screens/HomeScreen2';
 
 
 const Stack = createNativeStackNavigator();
@@ -41,6 +42,7 @@ function AppNavigation() {
                     <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
                     <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />
                     <Stack.Screen name="SignupScreen" component={SignupScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="HomeScreen2" component={HomeScreen2} options={{ headerShown: false }} />
                     <Stack.Screen
                         name="ProductScreen"
                         component={ProductScreen}
