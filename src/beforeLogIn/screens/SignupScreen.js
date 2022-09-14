@@ -1,10 +1,10 @@
-import { Alert, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { AppStyles } from '../AppStyles';
-import { Button } from 'native-base';
+import CustomButton from '../../components/common/CustomButton';
 
 
-export default function SignupScreen() {
+export default function SignupScreen({ navigation }) {
   const [fullname, setFullname] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -53,12 +53,15 @@ export default function SignupScreen() {
           underlineColorAndroid="transparent"
         />
       </View>
-      <Button
+      <View style={styles.loginContainer}>
+        <CustomButton title={" Sign Up"} onPress={() => navigation.navigate('LoginScreen')} />
+      </View>
+      {/* <Button
         containerStyle={[styles.facebookContainer, { marginTop: 50 }]}
         style={styles.facebookText}
         onPress={() => onRegister()}>
         Sign Up
-      </Button>
+      </Button> */}
     </View>
   );
 }
@@ -196,6 +199,7 @@ const styles = StyleSheet.create({
     borderRadius: AppStyles.borderRadius.main,
     padding: 10,
     marginTop: 30,
+    width: "85%"
   },
   loginText: {
     color: AppStyles.color.white,
@@ -223,6 +227,7 @@ const styles = StyleSheet.create({
     borderRadius: AppStyles.borderRadius.main,
     padding: 10,
     marginTop: 30,
+    width: "85%"
   },
   facebookText: {
     color: AppStyles.color.white,

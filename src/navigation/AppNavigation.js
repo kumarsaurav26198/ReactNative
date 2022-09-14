@@ -11,6 +11,8 @@ import Payment from '../pages/payment/Payment';
 import Cart from '../components/Cart';
 import LoactionScreen from '../pages/loactionScreen/LoactionScreen';
 import WelcomeScreen from '../beforeLogIn/screens/WelcomeScreen';
+import LoginScreen from '../beforeLogIn/screens/LoginScreen';
+import SignupScreen from '../beforeLogIn/screens/SignupScreen';
 
 
 const Stack = createNativeStackNavigator();
@@ -37,6 +39,8 @@ function AppNavigation() {
                         component={BottomTabNavigation}
                     />
                     <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="SignupScreen" component={SignupScreen} options={{ headerShown: false }} />
                     <Stack.Screen
                         name="ProductScreen"
                         component={ProductScreen}
@@ -90,7 +94,13 @@ export default AppNavigation;
 const styles = StyleSheet.create({
     headerTitle: {
         fontSize: 20
-    }
+    },
+    headerTitleStyle: {
+        fontWeight: 'bold',
+        textAlign: 'center',
+        alignSelf: 'center',
+        color: 'black',
+    },
 });
 
 

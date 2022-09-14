@@ -12,18 +12,17 @@ const CustomButton = ({ onPress, title, onClick }) => {
 export default CustomButton;
 
 const styles = StyleSheet.create({
-    appButtonContainer: {
-        elevation: 8,
-        backgroundColor: "#009688",
-        borderRadius: 10,
-        paddingVertical: 7,
-        paddingHorizontal: 12
-    },
+    // appButtonContainer: {
+    //     elevation: 8,
+    //     backgroundColor: "#009688",
+    //     borderRadius: 10,
+    //     // paddingVertical: 4,
+    // },
     appButtonText: {
         fontSize: 18,
         color: "#fff",
         fontWeight: "bold",
         alignSelf: "center",
-        textTransform: "uppercase"
+        // textTransform: "uppercase"
     }
 });

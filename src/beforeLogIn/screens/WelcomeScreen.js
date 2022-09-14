@@ -1,25 +1,20 @@
-import { ActivityIndicator, Text, View, StyleSheet, Alert } from 'react-native';
+import { TouchableOpacity, Text, View, StyleSheet, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-native-paper';
 import { AppStyles } from '../AppStyles';
+import CustomButton from '../../components/common/CustomButton';
 
 
 export default function WelcomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Say hello to your new app</Text>
-      <Button
-        containerStyle={styles.loginContainer}
-        style={styles.loginText}
-        onPress={() => navigation.navigate('LoginScreen')}>
-        Log In
-      </Button>
-      <Button
-        containerStyle={styles.signupContainer}
-        style={styles.signupText}
-        onPress={() => navigation.navigate('SignupScreen')}>
-        Sign Up
-      </Button>
+      <View style={styles.loginContainer}>
+        <CustomButton title={"Log In"} onPress={() => navigation.navigate('LoginScreen')} />
+      </View>
+      <View style={styles.facebookContainer}>
+        <CustomButton title={" Sign Up"} onPress={() => navigation.navigate('SignupScreen')} />
+      </View>
     </View>
   );
 }
@@ -177,6 +172,7 @@ const styles = StyleSheet.create({
     borderRadius: AppStyles.borderRadius.main,
     padding: 10,
     marginTop: 30,
+    width: "85%"
   },
   loginText: {
     color: AppStyles.color.white,
@@ -195,6 +191,14 @@ const styles = StyleSheet.create({
   },
   spinner: {
     marginTop: 200,
+  },
+  facebookContainer: {
+    width: 192,
+    backgroundColor: AppStyles.color.facebook,
+    borderRadius: AppStyles.borderRadius.main,
+    padding: 10,
+    marginTop: 30,
+    width: '85%'
   },
 });
 

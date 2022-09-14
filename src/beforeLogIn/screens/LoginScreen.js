@@ -1,27 +1,87 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, TextInput, ActivityIndicator } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { AppStyles } from '../AppStyles';
+import Button from 'react-native';
+import CustomButton from '../../components/common/CustomButton';
 
-export default function LoginScreen() {
+export default function LoginScreen({ navigation }) {
+
+  const onPressFacebook = () => { };
+
+  const onPressLogin = () => { };
+
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
-    <View>
-      <Text>LoginScreen</Text>
+    <View style={styles.container}>
+      <Text style={[styles.title, styles.leftTitle]}>Sign In</Text>
+      <View style={styles.InputContainer}>
+        <TextInput
+          style={styles.body}
+          placeholder="E-mail or phone number"
+          onChangeText={setEmail}
+          value={email}
+          placeholderTextColor={AppStyles.color.grey}
+          underlineColorAndroid="transparent"
+        />
+      </View>
+      <View style={styles.InputContainer}>
+        <TextInput
+          style={styles.body}
+          secureTextEntry={true}
+          placeholder="Password"
+          onChangeText={setPassword}
+          value={password}
+          placeholderTextColor={AppStyles.color.grey}
+          underlineColorAndroid="transparent"
+        />
+      </View>
+      <View style={styles.loginContainer}>
+        <CustomButton title={"  Log in"} onPress={() => navigation.navigate('ProductScreen')} />
+      </View>
+      <Text style={styles.or}>OR</Text>
+      <View style={styles.facebookContainer}>
+        <CustomButton title={" Log in facebook"} onPress={() => navigation.navigate('SignupScreen')} />
+      </View>
+      {/*
+      <Button
+        containerStyle={styles.loginContainer}
+        style={styles.loginText}
+        onPress={() => onPressLogin()}>
+        Log in
+      </Button>
+
+      <Text style={styles.or}>OR</Text>
+      <Button
+        containerStyle={styles.facebookContainer}
+        style={styles.facebookText}
+        onPress={() => onPressFacebook()}>
+        Login with Facebook
+      </Button>
+      {loading ? (
+        <ActivityIndicator
+          style={{ marginTop: 30 }}
+          size="large"
+          animating={loading}
+          color={AppStyles.color.tint}
+        />
+      ) : (
+        <Button
+          containerStyle={styles.facebookContainer}
+          style={styles.facebookText}
+          onPress={() => onPressFacebook()}>
+          Login with Facebook
+        </Button>
+      )} */}
     </View>
   );
 }
 
-const styles = StyleSheet.create({});
 
-// import React, { useEffect, useState } from 'react';
-// import {
-//   StyleSheet,
-//   Text,
-//   TextInput,
-//   View,
-//   Alert,
-//   ActivityIndicator,
-// } from 'react-native';
+
 // import Button from 'react-native-button';
-// import { AppStyles } from '../AppStyles';
 // import firebase from '@react-native-firebase/app';
 // import auth from '@react-native-firebase/auth';
 // import firestore from '@react-native-firebase/firestore';
@@ -245,80 +305,89 @@ const styles = StyleSheet.create({});
 //   );
 // }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//   },
-//   or: {
-//     color: 'black',
-//     marginTop: 40,
-//     marginBottom: 10,
-//   },
-//   title: {
-//     fontSize: AppStyles.fontSize.title,
-//     fontWeight: 'bold',
-//     color: AppStyles.color.tint,
-//     marginTop: 20,
-//     marginBottom: 20,
-//   },
-//   leftTitle: {
-//     alignSelf: 'stretch',
-//     textAlign: 'left',
-//     marginLeft: 20,
-//   },
-//   content: {
-//     paddingLeft: 50,
-//     paddingRight: 50,
-//     textAlign: 'center',
-//     fontSize: AppStyles.fontSize.content,
-//     color: AppStyles.color.text,
-//   },
-//   loginContainer: {
-//     width: AppStyles.buttonWidth.main,
-//     backgroundColor: AppStyles.color.tint,
-//     borderRadius: AppStyles.borderRadius.main,
-//     padding: 10,
-//     marginTop: 30,
-//   },
-//   loginText: {
-//     color: AppStyles.color.white,
-//   },
-//   placeholder: {
-//     color: 'red',
-//   },
-//   InputContainer: {
-//     width: AppStyles.textInputWidth.main,
-//     marginTop: 30,
-//     borderWidth: 1,
-//     borderStyle: 'solid',
-//     borderColor: AppStyles.color.grey,
-//     borderRadius: AppStyles.borderRadius.main,
-//   },
-//   body: {
-//     height: 42,
-//     paddingLeft: 20,
-//     paddingRight: 20,
-//     color: AppStyles.color.text,
-//   },
-//   facebookContainer: {
-//     width: 192,
-//     backgroundColor: AppStyles.color.facebook,
-//     borderRadius: AppStyles.borderRadius.main,
-//     padding: 10,
-//     marginTop: 30,
-//   },
-//   facebookText: {
-//     color: AppStyles.color.white,
-//   },
-//   googleContainer: {
-//     width: 192,
-//     height: 48,
-//     marginTop: 30,
-//   },
-//   googleText: {
-//     color: AppStyles.color.white,
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  or: {
+    color: 'black',
+    marginTop: 40,
+    marginBottom: 10,
+  },
+  loginContainer: {
+    width: AppStyles.buttonWidth.main,
+    backgroundColor: AppStyles.color.tint,
+    borderRadius: AppStyles.borderRadius.main,
+    padding: 10,
+    marginTop: 30,
+    width: "95%"
+  },
+  title: {
+    fontSize: AppStyles.fontSize.title,
+    fontWeight: 'bold',
+    color: AppStyles.color.tint,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  leftTitle: {
+    alignSelf: 'stretch',
+    textAlign: 'left',
+    marginLeft: 20,
+  },
+  content: {
+    paddingLeft: 50,
+    paddingRight: 50,
+    textAlign: 'center',
+    fontSize: AppStyles.fontSize.content,
+    color: AppStyles.color.text,
+  },
+  loginContainer: {
+    width: AppStyles.buttonWidth.main,
+    backgroundColor: AppStyles.color.tint,
+    borderRadius: AppStyles.borderRadius.main,
+    padding: 10,
+    marginTop: 30,
+  },
+  loginText: {
+    color: AppStyles.color.white,
+  },
+  placeholder: {
+    color: 'red',
+  },
+  InputContainer: {
+    width: AppStyles.textInputWidth.main,
+    marginTop: 30,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: AppStyles.color.grey,
+    borderRadius: AppStyles.borderRadius.main,
+  },
+  body: {
+    height: 42,
+    paddingLeft: 20,
+    paddingRight: 20,
+    color: AppStyles.color.text,
+  },
+  facebookContainer: {
+    width: 192,
+    backgroundColor: AppStyles.color.facebook,
+    borderRadius: AppStyles.borderRadius.main,
+    padding: 10,
+    marginTop: 30,
+    width: "85%"
 
-// export default LoginScreen;
+  },
+  facebookText: {
+    color: AppStyles.color.white,
+  },
+  googleContainer: {
+    width: 192,
+    height: 48,
+    marginTop: 30,
+  },
+  googleText: {
+    color: AppStyles.color.white,
+  },
+});
+
