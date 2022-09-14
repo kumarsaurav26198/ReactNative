@@ -10,13 +10,14 @@ import { CartProvider } from '../services/CartContext';
 import Payment from '../pages/payment/Payment';
 import Cart from '../components/Cart';
 import LoactionScreen from '../pages/loactionScreen/LoactionScreen';
+import WelcomeScreen from '../beforeLogIn/screens/WelcomeScreen';
 
 
 const Stack = createNativeStackNavigator();
 
 function SplashScreenImage({ navigation }) {
     setTimeout(() => {
-        navigation.replace('ProductScreen');
+        navigation.replace('WelcomeScreen');
     }, 3000);
     return (
         <ImageBackground style={{ flex: 1, height: "100%", width: "100%" }} source={require("../assets/splash.png")} >
@@ -35,6 +36,7 @@ function AppNavigation() {
                         name="Home"
                         component={BottomTabNavigation}
                     />
+                    <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
                     <Stack.Screen
                         name="ProductScreen"
                         component={ProductScreen}
