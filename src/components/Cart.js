@@ -16,7 +16,7 @@ export default Cart;
 const styles = StyleSheet.create({
     appButtonContainer: {
         elevation: 8,
-        backgroundColor: "#544fe3",
+        backgroundColor: "#3293fe",
         borderRadius: 50,
         paddingVertical: 7,
         paddingHorizontal: 12

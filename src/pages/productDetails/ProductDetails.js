@@ -39,10 +39,10 @@ export default function ProductDetails({ route, navigation }) {
                     <Text style={styles.name}>{product.name}</Text>
                     <Text style={styles.price}>Rs..  {product.price} ₹</Text>
                     <Text style={styles.description}>{product.description}</Text>
-                    <View style={styles.buttonConatainer}>
+                    <View style={styles.loginContainer}>
                         <CustomButton title={"Add Too cart"} onPress={onAddToCart} />
                     </View>
-                    <View style={styles.buttonConatainer}>
+                    <View style={styles.locationContainer}>
                         <CustomButton title={" set Loaction"} onPress={setLoaction} />
                     </View>
 
@@ -88,7 +88,18 @@ const styles = StyleSheet.create({
         color: '#787878',
         marginBottom: 16,
     },
-    buttonConatainer: {
-        margin: 10,
+    loginContainer: {
+        backgroundColor: "#ff5a66",
+        borderRadius: 25,
+        padding: 10,
+        marginTop: 30,
+        width: "100%"
+    },
+    locationContainer: {
+        backgroundColor: "#3293fe",
+        borderRadius: 25,
+        padding: 10,
+        marginTop: 30,
+        width: "100%"
     }
 });

@@ -2,13 +2,14 @@ import { StyleSheet, Text, View, TextInput, ActivityIndicator, Alert } from 'rea
 import React, { useEffect, useState } from 'react';
 import { AppStyles } from '../AppStyles';
 import CustomButton from '../../components/common/CustomButton';
-
+// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginScreen({ navigation }) {
 
   const onPressFacebook = () => { };
 
   const onPressLogin = () => {
+
     if (email.length <= 0 || password.length <= 0)
     {
       Alert.alert('Please fill out the required fields.');
