@@ -11,43 +11,16 @@ export default function SignupScreen({ navigation }) {
       Alert.alert('Please fill out the required fields.');
       return;
     }
-    auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
-        const data = {
-          email: email,
-          fullname: fullname,
-          phone: phone,
-          appIdentifier: 'rn-android-universal-listings',
-        };
-        const user_uid = response.user._user.uid;
-        firestore().collection('users').doc(user_uid).set(data);
-        firestore()
-          .collection('users')
-          .doc(user_uid)
-          .get()
-          .then(function (user) {
-            dispatch(login(user.data()));
-            navigation.navigate('DrawerStack', { user });
-          })
-          .catch(function (error) {
-            const { code, message } = error;
-            Alert.alert(message);
-          });
-      })
-      .catch((error) => {
-        const { code, message } = error;
-        Alert.alert(message);
-      });
+
   };
-  const [fullname, setFullname] = useState('');
-  const [phone, setPhone] = useState('');
+  // const [fullname, setFullname] = useState('');
+  // const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   return (
     <View style={styles.container}>
       <Text style={[styles.title, styles.leftTitle]}>Create new account</Text>
-      <View style={styles.InputContainer}>
+      {/* <View style={styles.InputContainer}>
         <TextInput
           style={styles.body}
           placeholder="Full Name"
@@ -66,7 +39,7 @@ export default function SignupScreen({ navigation }) {
           placeholderTextColor={AppStyles.color.grey}
           underlineColorAndroid="transparent"
         />
-      </View>
+      </View> */}
       <View style={styles.InputContainer}>
         <TextInput
           style={styles.body}
