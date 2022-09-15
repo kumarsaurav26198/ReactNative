@@ -41,9 +41,11 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.loginContainer}>
         <CustomButton title={"  Log in"} onPress={() => navigation.navigate('ProductScreen')} />
       </View>
-      <Text style={styles.or}>OR</Text>
       <View style={styles.facebookContainer}>
-        <CustomButton title={" Log in facebook"} onPress={() => navigation.navigate('SignupScreen')} />
+        <CustomButton title={" Log in facebook"} onPress={() => navigation.navigate('ProductScreen')} />
+      </View>
+      <View style={styles.googleContainer}>
+        <CustomButton title={" Log in google"} onPress={() => navigation.navigate('ProductScreen')} />
       </View>
       {/*
       <Button
@@ -315,14 +317,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: 10,
   },
-  loginContainer: {
-    width: AppStyles.buttonWidth.main,
-    backgroundColor: AppStyles.color.tint,
-    borderRadius: AppStyles.borderRadius.main,
-    padding: 10,
-    marginTop: 30,
-    width: "95%"
-  },
+
   title: {
     fontSize: AppStyles.fontSize.title,
     fontWeight: 'bold',
@@ -348,6 +343,8 @@ const styles = StyleSheet.create({
     borderRadius: AppStyles.borderRadius.main,
     padding: 10,
     marginTop: 30,
+    width: "85%"
+
   },
   loginText: {
     color: AppStyles.color.white,
@@ -370,8 +367,15 @@ const styles = StyleSheet.create({
     color: AppStyles.color.text,
   },
   facebookContainer: {
-    width: 192,
     backgroundColor: AppStyles.color.facebook,
+    borderRadius: AppStyles.borderRadius.main,
+    padding: 10,
+    marginTop: 30,
+    width: "85%"
+
+  },
+  googleContainer: {
+    backgroundColor: AppStyles.color.greenBlue,
     borderRadius: AppStyles.borderRadius.main,
     padding: 10,
     marginTop: 30,
@@ -381,11 +385,11 @@ const styles = StyleSheet.create({
   facebookText: {
     color: AppStyles.color.white,
   },
-  googleContainer: {
-    width: 192,
-    height: 48,
-    marginTop: 30,
-  },
+  // googleContainer: {
+  //   width: 192,
+  //   height: 48,
+  //   marginTop: 30,
+  // },
   googleText: {
     color: AppStyles.color.white,
   },

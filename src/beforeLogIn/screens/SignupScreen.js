@@ -54,8 +54,9 @@ export default function SignupScreen({ navigation }) {
         />
       </View>
       <View style={styles.loginContainer}>
-        <CustomButton title={" Sign Up"} onPress={() => navigation.navigate('LoginScreen')} />
+        <CustomButton title={" Create account"} onPress={() => navigation.navigate('LoginScreen')} />
       </View>
+
       {/* <Button
         containerStyle={[styles.facebookContainer, { marginTop: 50 }]}
         style={styles.facebookText}

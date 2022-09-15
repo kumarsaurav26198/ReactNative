@@ -15,7 +15,7 @@ export default function WelcomeScreen({ navigation }) {
         <CustomButton title={"Log In"} onPress={() => navigation.navigate('LoginScreen')} />
       </View>
       <View style={styles.facebookContainer}>
-        <CustomButton title={" Sign Up"} onPress={() => navigation.navigate('SignupScreen')} />
+        <CustomButton title={" Register"} onPress={() => navigation.navigate('SignupScreen')} />
       </View>
     </View>
   );
@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
   },
   facebookContainer: {
     width: 192,
-    backgroundColor: AppStyles.color.facebook,
+    backgroundColor: AppStyles.color.grey,
     borderRadius: AppStyles.borderRadius.main,
     padding: 10,
     marginTop: 30,

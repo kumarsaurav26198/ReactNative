@@ -49,7 +49,11 @@ function AppNavigation() {
                         headerBackVisible: true,
 
                     }} />
-                    <Stack.Screen name="SignupScreen" component={SignupScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="SignupScreen" component={SignupScreen} options={{
+                        title: '',
+                        headerTitleStyle: styles.headerTitle,
+                        headerBackVisible: true,
+                    }} />
                     <Stack.Screen name="HomeScreen2" component={HomeScreen2} options={{ headerShown: false }} />
                     <Stack.Screen
                         name="ProductScreen"
