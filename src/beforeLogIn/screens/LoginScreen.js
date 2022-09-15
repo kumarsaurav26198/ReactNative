@@ -1,14 +1,54 @@
-import { StyleSheet, Text, View, TextInput, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ActivityIndicator, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { AppStyles } from '../AppStyles';
-import Button from 'react-native';
 import CustomButton from '../../components/common/CustomButton';
+// import auth from '../../firebase/config';
 
 export default function LoginScreen({ navigation }) {
 
   const onPressFacebook = () => { };
 
-  const onPressLogin = () => { };
+  const onPressLogin = () => {
+    if (email.length <= 0 || password.length <= 0)
+    {
+      Alert.alert('Please fill out the required fields.');
+      return;
+    }
+    // auth()
+    //   .signInWithEmailAndPassword(email, password)
+    //   .then((response) => {
+    //     const user_uid = response.user._user.uid;
+    //     firestore()
+    //       .collection('users')
+    //       .doc(user_uid)
+    //       .get()
+    //       .then(function (user) {
+    //         if (user.exists)
+    //         {
+    //           AsyncStorage.setItem('@loggedInUserID:id', user_uid);
+    //           AsyncStorage.setItem('@loggedInUserID:key', email);
+    //           AsyncStorage.setItem('@loggedInUserID:password', password);
+    //           dispatch(login(user.data()));
+    //           navigation.navigate('DrawerStack');
+    //         } else
+    //         {
+    //           Alert.alert('User does not exist. Please try again.');
+    //         }
+    //       })
+    //       .catch(function (error) {
+    //         const { message } = error;
+    //         Alert.alert(message);
+    //       });
+    //   })
+    //   .catch((error) => {
+    //     const { message } = error;
+    //     Alert.alert(message);
+    //     // For details of error codes, see the docs
+    //     // The message contains the default Firebase string
+    //     // representation of the error
+    //   });
+
+  };
 
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -39,7 +79,8 @@ export default function LoginScreen({ navigation }) {
         />
       </View>
       <View style={styles.loginContainer}>
-        <CustomButton title={"  Log in"} onPress={() => navigation.navigate('ProductScreen')} />
+        <CustomButton title={"  Log in"} onPress={onPressLogin} />
+        {/* <CustomButton title={"  Log in"} onPress={() => navigation.navigate('ProductScreen')} /> */}
       </View>
       <View style={styles.facebookContainer}>
         <CustomButton title={" Log in facebook"} onPress={() => navigation.navigate('ProductScreen')} />
@@ -47,36 +88,6 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.googleContainer}>
         <CustomButton title={" Log in google"} onPress={() => navigation.navigate('ProductScreen')} />
       </View>
-      {/*
-      <Button
-        containerStyle={styles.loginContainer}
-        style={styles.loginText}
-        onPress={() => onPressLogin()}>
-        Log in
-      </Button>
-
-      <Text style={styles.or}>OR</Text>
-      <Button
-        containerStyle={styles.facebookContainer}
-        style={styles.facebookText}
-        onPress={() => onPressFacebook()}>
-        Login with Facebook
-      </Button>
-      {loading ? (
-        <ActivityIndicator
-          style={{ marginTop: 30 }}
-          size="large"
-          animating={loading}
-          color={AppStyles.color.tint}
-        />
-      ) : (
-        <Button
-          containerStyle={styles.facebookContainer}
-          style={styles.facebookText}
-          onPress={() => onPressFacebook()}>
-          Login with Facebook
-        </Button>
-      )} */}
     </View>
   );
 }

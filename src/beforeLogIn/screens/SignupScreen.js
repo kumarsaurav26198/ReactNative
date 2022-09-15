@@ -1,10 +1,45 @@
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Alert } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { AppStyles } from '../AppStyles';
 import CustomButton from '../../components/common/CustomButton';
 
 
 export default function SignupScreen({ navigation }) {
+  const createAcc = () => {
+    if (email.length <= 0 || password.length <= 0)
+    {
+      Alert.alert('Please fill out the required fields.');
+      return;
+    }
+    auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        const data = {
+          email: email,
+          fullname: fullname,
+          phone: phone,
+          appIdentifier: 'rn-android-universal-listings',
+        };
+        const user_uid = response.user._user.uid;
+        firestore().collection('users').doc(user_uid).set(data);
+        firestore()
+          .collection('users')
+          .doc(user_uid)
+          .get()
+          .then(function (user) {
+            dispatch(login(user.data()));
+            navigation.navigate('DrawerStack', { user });
+          })
+          .catch(function (error) {
+            const { code, message } = error;
+            Alert.alert(message);
+          });
+      })
+      .catch((error) => {
+        const { code, message } = error;
+        Alert.alert(message);
+      });
+  };
   const [fullname, setFullname] = useState('');
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
@@ -54,7 +89,8 @@ export default function SignupScreen({ navigation }) {
         />
       </View>
       <View style={styles.loginContainer}>
-        <CustomButton title={" Create account"} onPress={() => navigation.navigate('LoginScreen')} />
+        <CustomButton title={" Create account"} onPress={createAcc} />
+        {/* <CustomButton title={" Create account"} onPress={() => navigation.navigate('LoginScreen')} /> */}
       </View>
 
       {/* <Button
