@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Button } from 'react-native-paper';
 import { AppStyles } from '../AppStyles';
 import CustomButton from '../../components/common/CustomButton';
+import { login } from '../../redux/actions/authActions';
+
 
 
 export default function WelcomeScreen({ navigation }) {

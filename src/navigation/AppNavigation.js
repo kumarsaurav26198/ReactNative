@@ -39,8 +39,16 @@ function AppNavigation() {
                         name="Home"
                         component={BottomTabNavigation}
                     />
-                    <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{ headerShown: false }} />
-                    <Stack.Screen name="LoginScreen" component={LoginScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} options={{
+                        headerShown: false,
+
+                    }} />
+                    <Stack.Screen name="LoginScreen" component={LoginScreen} options={{
+                        title: '',
+                        headerTitleStyle: styles.headerTitle,
+                        headerBackVisible: true,
+
+                    }} />
                     <Stack.Screen name="SignupScreen" component={SignupScreen} options={{ headerShown: false }} />
                     <Stack.Screen name="HomeScreen2" component={HomeScreen2} options={{ headerShown: false }} />
                     <Stack.Screen
@@ -48,6 +56,7 @@ function AppNavigation() {
                         component={ProductScreen}
                         options={({ navigation }) => ({
                             title: 'Products',
+                            headerBackVisible: false,
                             headerTitleStyle: styles.headerTitle,
                             headerRight: () => <Cart title="Cart" onPress={() => navigation.navigate("ShoppingCartScreen")} />
                         })}
