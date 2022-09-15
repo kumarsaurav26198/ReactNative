@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, TextInput, ActivityIndicator, Alert } from 'rea
 import React, { useEffect, useState } from 'react';
 import { AppStyles } from '../AppStyles';
 import CustomButton from '../../components/common/CustomButton';
-// import auth from '../../firebase/config';
+
 
 export default function LoginScreen({ navigation }) {
 
@@ -12,42 +12,10 @@ export default function LoginScreen({ navigation }) {
     if (email.length <= 0 || password.length <= 0)
     {
       Alert.alert('Please fill out the required fields.');
-      return;
+    } else
+    {
+      navigation.navigate("ProductScreen");
     }
-    // auth()
-    //   .signInWithEmailAndPassword(email, password)
-    //   .then((response) => {
-    //     const user_uid = response.user._user.uid;
-    //     firestore()
-    //       .collection('users')
-    //       .doc(user_uid)
-    //       .get()
-    //       .then(function (user) {
-    //         if (user.exists)
-    //         {
-    //           AsyncStorage.setItem('@loggedInUserID:id', user_uid);
-    //           AsyncStorage.setItem('@loggedInUserID:key', email);
-    //           AsyncStorage.setItem('@loggedInUserID:password', password);
-    //           dispatch(login(user.data()));
-    //           navigation.navigate('DrawerStack');
-    //         } else
-    //         {
-    //           Alert.alert('User does not exist. Please try again.');
-    //         }
-    //       })
-    //       .catch(function (error) {
-    //         const { message } = error;
-    //         Alert.alert(message);
-    //       });
-    //   })
-    //   .catch((error) => {
-    //     const { message } = error;
-    //     Alert.alert(message);
-    //     // For details of error codes, see the docs
-    //     // The message contains the default Firebase string
-    //     // representation of the error
-    //   });
-
   };
 
   const [loading, setLoading] = useState(false);

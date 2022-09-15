@@ -9,7 +9,9 @@ export default function SignupScreen({ navigation }) {
     if (email.length <= 0 || password.length <= 0)
     {
       Alert.alert('Please fill out the required fields.');
-      return;
+    } else
+    {
+      navigation.navigate("LoginScreen");
     }
 
   };
