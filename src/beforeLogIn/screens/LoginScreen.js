@@ -102,7 +102,6 @@ export default function LoginScreen({ navigation }) {
 //   GoogleSignin,
 //   GoogleSigninButton,
 // } from '@react-native-firebase/firestore';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { useDispatch } from 'react-redux';
 // const FBSDK = require('react-native-fbsdk');
 // const { LoginManager, AccessToken } = FBSDK;

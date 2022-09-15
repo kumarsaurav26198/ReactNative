@@ -26,7 +26,6 @@ export default function WelcomeScreen({ navigation }) {
 // import auth from '@react-native-firebase/auth';
 // import firebase from '@react-native-firebase/app';
 // import firestore from '@react-native-firebase/firestore';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { useDispatch } from 'react-redux';
 // import { login } from '../../redux/actions/authActions';
 // import { AppStyles } from '../AppStyles';

@@ -1,5 +1,4 @@
 import { ActionTypes } from "../constants/actiontypes";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 const initialAuthState = { isLoggedIn: false };
 
 export const authReducer = (state = initialAuthState, action) => {
