@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "450750816926",
+    "project_id": "mynativeapp-12cb2",
+    "storage_bucket": "mynativeapp-12cb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450750816926:android:ac2a2003ccb7babebe918f",
+        "android_client_info": {
+          "package_name": "com.reactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450750816926-j5gsb4i8kplohss3vnqmgnrm76842u5l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIP_FMYvQlXoaSN53xm7n4Ta-GeUt838k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "450750816926-j5gsb4i8kplohss3vnqmgnrm76842u5l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
