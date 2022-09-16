@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View, TextInput, ActivityIndicator, Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import React, { useState } from 'react';
 import { AppStyles } from '../AppStyles';
 import CustomButton from '../../components/common/CustomButton';
-// import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginScreen({ navigation }) {
+  const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const onPressFacebook = () => { };
 
@@ -18,11 +20,6 @@ export default function LoginScreen({ navigation }) {
       navigation.navigate("ProductScreen");
     }
   };
-
-  const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   return (
     <View style={styles.container}>
       <Text style={[styles.title, styles.leftTitle]}>Sign In</Text>
@@ -60,231 +57,6 @@ export default function LoginScreen({ navigation }) {
     </View>
   );
 }
-
-
-
-// import Button from 'react-native-button';
-// import firebase from '@react-native-firebase/app';
-// import auth from '@react-native-firebase/auth';
-// import firestore from '@react-native-firebase/firestore';
-// import {
-//   GoogleSignin,
-//   GoogleSigninButton,
-// } from '@react-native-firebase/firestore';
-// import { useDispatch } from 'react-redux';
-// const FBSDK = require('react-native-fbsdk');
-// const { LoginManager, AccessToken } = FBSDK;
-// import { login } from '../../redux/actions/authActions';
-
-// function LoginScreen({ navigation }) {
-//   const [loading, setLoading] = useState(false);
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const dispatch = useDispatch();
-
-//   useEffect(() => {
-//     GoogleSignin.configure({
-//       webClientId:
-//         '763342324681-petgvkkeltcfi9qmgr8um8ohak81l953.apps.googleusercontent.com',
-//     });
-//   }, []);
-
-//   const onPressLogin = () => {
-//     if (email.length <= 0 || password.length <= 0)
-//     {
-//       Alert.alert('Please fill out the required fields.');
-//       return;
-//     }
-//     auth()
-//       .signInWithEmailAndPassword(email, password)
-//       .then((response) => {
-//         const user_uid = response.user._user.uid;
-//         firestore()
-//           .collection('users')
-//           .doc(user_uid)
-//           .get()
-//           .then(function (user) {
-//             if (user.exists)
-//             {
-//               AsyncStorage.setItem('@loggedInUserID:id', user_uid);
-//               AsyncStorage.setItem('@loggedInUserID:key', email);
-//               AsyncStorage.setItem('@loggedInUserID:password', password);
-//               dispatch(login(user.data()));
-//               navigation.navigate('ProductScreen');
-//             } else
-//             {
-//               Alert.alert('User does not exist. Please try again.');
-//             }
-//           })
-//           .catch(function (error) {
-//             const { message } = error;
-//             Alert.alert(message);
-//           });
-//       })
-//       .catch((error) => {
-//         const { message } = error;
-//         Alert.alert(message);
-//         // For details of error codes, see the docs
-//         // The message contains the default Firebase string
-//         // representation of the error
-//       });
-//   };
-
-//   const onPressFacebook = () => {
-//     LoginManager.logInWithPermissions([
-//       'public_profile',
-//       'user_friends',
-//       'email',
-//     ]).then(
-//       (result) => {
-//         if (result.isCancelled)
-//         {
-//           Alert.alert('Whoops!', 'You cancelled the sign in.');
-//         } else
-//         {
-//           AccessToken.getCurrentAccessToken().then((data) => {
-//             const credential = firebase.auth.FacebookAuthProvider.credential(
-//               data.accessToken,
-//             );
-//             const accessToken = data.accessToken;
-//             auth()
-//               .signInWithCredential(credential)
-//               .then((result) => {
-//                 var user = result.user;
-//                 AsyncStorage.setItem(
-//                   '@loggedInUserID:facebookCredentialAccessToken',
-//                   accessToken,
-//                 );
-//                 AsyncStorage.setItem('@loggedInUserID:id', user.uid);
-//                 var userDict = {
-//                   id: user.uid,
-//                   fullname: user.displayName,
-//                   email: user.email,
-//                   profileURL: user.photoURL,
-//                 };
-//                 var userData = {
-//                   ...userDict,
-//                   appIdentifier: 'rn-android-universal-listings',
-//                 };
-//                 firestore().collection('users').doc(user.uid).set(userData);
-//                 dispatch(login(userDict));
-//                 navigation.navigate('DrawerStack', {
-//                   user: userDict,
-//                 });
-//               })
-//               .catch((error) => {
-//                 alert('Please try again! ' + error);
-//               });
-//           });
-//         }
-//       },
-//       (error) => {
-//         Alert.alert('Sign in error', error);
-//       },
-//     );
-//   };
-
-//   const onPressGoogle = () => {
-//     setLoading(true);
-//     GoogleSignin.signIn()
-//       .then((data) => {
-//         console.log('data', data);
-//         // Create a new Firebase credential with the token
-//         const credential = firebase.auth.GoogleAuthProvider.credential(
-//           data.idToken,
-//         );
-//         // Login with the credential
-//         const accessToken = data.idToken;
-//         AsyncStorage.setItem(
-//           '@loggedInUserID:googleCredentialAccessToken',
-//           accessToken,
-//         );
-//         return auth().signInWithCredential(credential);
-//       })
-//       .then((result) => {
-//         setLoading(false);
-//         var user = result.user;
-//         AsyncStorage.setItem('@loggedInUserID:id', user.uid);
-//         var userDict = {
-//           id: user.uid,
-//           fullname: user.displayName,
-//           email: user.email,
-//           photoURL: user.photoURL,
-//         };
-//         var data = {
-//           ...userDict,
-//           appIdentifier: 'rn-android-universal-listings',
-//         };
-//         console.log('data', data);
-//         firestore().collection('users').doc(user.uid).set(data);
-//         dispatch(login(userDict));
-//         navigation.navigate('DrawerStack', {
-//           user: userDict,
-//         });
-//       })
-//       .catch((error) => {
-//         const { message } = error;
-//         setLoading(false);
-//         Alert.alert(message);
-//       });
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <Text style={[styles.title, styles.leftTitle]}>Sign In</Text>
-//       <View style={styles.InputContainer}>
-//         <TextInput
-//           style={styles.body}
-//           placeholder="E-mail or phone number"
-//           onChangeText={setEmail}
-//           value={email}
-//           placeholderTextColor={AppStyles.color.grey}
-//           underlineColorAndroid="transparent"
-//         />
-//       </View>
-//       <View style={styles.InputContainer}>
-//         <TextInput
-//           style={styles.body}
-//           secureTextEntry={true}
-//           placeholder="Password"
-//           onChangeText={setPassword}
-//           value={password}
-//           placeholderTextColor={AppStyles.color.grey}
-//           underlineColorAndroid="transparent"
-//         />
-//       </View>
-//       <Button
-//         containerStyle={styles.loginContainer}
-//         style={styles.loginText}
-//         onPress={() => onPressLogin()}>
-//         Log in
-//       </Button>
-//       <Text style={styles.or}>OR</Text>
-//       <Button
-//         containerStyle={styles.facebookContainer}
-//         style={styles.facebookText}
-//         onPress={() => onPressFacebook()}>
-//         Login with Facebook
-//       </Button>
-//       {loading ? (
-//         <ActivityIndicator
-//           style={{ marginTop: 30 }}
-//           size="large"
-//           animating={loading}
-//           color={AppStyles.color.tint}
-//         />
-//       ) : (
-//         <GoogleSigninButton
-//           style={styles.googleContainer}
-//           size={GoogleSigninButton.Size.Wide}
-//           color={GoogleSigninButton.Color.Light}
-//           onPress={onPressGoogle}
-//         />
-//       )}
-//     </View>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
@@ -364,11 +136,6 @@ const styles = StyleSheet.create({
   facebookText: {
     color: AppStyles.color.white,
   },
-  // googleContainer: {
-  //   width: 192,
-  //   height: 48,
-  //   marginTop: 30,
-  // },
   googleText: {
     color: AppStyles.color.white,
   },

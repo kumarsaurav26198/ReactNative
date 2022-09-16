@@ -1,10 +1,13 @@
 import { StyleSheet, Text, TextInput, View, Alert } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AppStyles } from '../AppStyles';
 import CustomButton from '../../components/common/CustomButton';
 
-
 export default function SignupScreen({ navigation }) {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const createAcc = () => {
     if (email.length <= 0 || password.length <= 0)
     {
@@ -15,10 +18,7 @@ export default function SignupScreen({ navigation }) {
     }
 
   };
-  // const [fullname, setFullname] = useState('');
-  // const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+
   return (
     <View style={styles.container}>
       <Text style={[styles.title, styles.leftTitle]}>Create new account</Text>
@@ -26,7 +26,9 @@ export default function SignupScreen({ navigation }) {
         <TextInput
           style={styles.body}
           placeholder="Full Name"
-          onChangeText={setFullname}
+          onChangeText={txt => {
+            setfullname(txt);
+          }}
           value={fullname}
           placeholderTextColor={AppStyles.color.grey}
           underlineColorAndroid="transparent"
@@ -36,7 +38,9 @@ export default function SignupScreen({ navigation }) {
         <TextInput
           style={styles.body}
           placeholder="Phone Number"
-          onChangeText={setPhone}
+         onChangeText={txt => {
+            setPhone(txt);
+          }}
           value={phone}
           placeholderTextColor={AppStyles.color.grey}
           underlineColorAndroid="transparent"
@@ -46,7 +50,9 @@ export default function SignupScreen({ navigation }) {
         <TextInput
           style={styles.body}
           placeholder="E-mail Address"
-          onChangeText={setEmail}
+          onChangeText={txt => {
+            setEmail(txt);
+          }}
           value={email}
           placeholderTextColor={AppStyles.color.grey}
           underlineColorAndroid="transparent"
@@ -57,7 +63,9 @@ export default function SignupScreen({ navigation }) {
           style={styles.body}
           placeholder="Password"
           secureTextEntry={true}
-          onChangeText={setPassword}
+          onChangeText={txt => {
+            setPassword(txt);
+          }}
           value={password}
           placeholderTextColor={AppStyles.color.grey}
           underlineColorAndroid="transparent"
@@ -67,119 +75,10 @@ export default function SignupScreen({ navigation }) {
         <CustomButton title={" Create account"} onPress={createAcc} />
         {/* <CustomButton title={" Create account"} onPress={() => navigation.navigate('LoginScreen')} /> */}
       </View>
-
-      {/* <Button
-        containerStyle={[styles.facebookContainer, { marginTop: 50 }]}
-        style={styles.facebookText}
-        onPress={() => onRegister()}>
-        Sign Up
-      </Button> */}
     </View>
   );
 }
 
-
-
-// import React, {useState} from 'react';
-// import Button from 'react-native-button';
-// import {AppStyles} from '../AppStyles';
-// import firestore from '@react-native-firebase/firestore';
-// import auth from '@react-native-firebase/auth';
-// import {useDispatch} from 'react-redux';
-// import {login} from '../reducers';
-
-// function SignupScreen({navigation}) {
-//   const [fullname, setFullname] = useState('');
-//   const [phone, setPhone] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-
-//   const dispatch = useDispatch();
-
-//   const onRegister = () => {
-//     auth()
-//       .createUserWithEmailAndPassword(email, password)
-//       .then((response) => {
-//         const data = {
-//           email: email,
-//           fullname: fullname,
-//           phone: phone,
-//           appIdentifier: 'rn-android-universal-listings',
-//         };
-//         const user_uid = response.user._user.uid;
-//         firestore().collection('users').doc(user_uid).set(data);
-//         firestore()
-//           .collection('users')
-//           .doc(user_uid)
-//           .get()
-//           .then(function (user) {
-//             dispatch(login(user.data()));
-//             navigation.navigate('DrawerStack', {user});
-//           })
-//           .catch(function (error) {
-//             const {code, message} = error;
-//             Alert.alert(message);
-//           });
-//       })
-//       .catch((error) => {
-//         const {code, message} = error;
-//         Alert.alert(message);
-//       });
-//   };
-
-//   return (
-//     <View style={styles.container}>
-//       <Text style={[styles.title, styles.leftTitle]}>Create new account</Text>
-//       <View style={styles.InputContainer}>
-//         <TextInput
-//           style={styles.body}
-//           placeholder="Full Name"
-//           onChangeText={setFullname}
-//           value={fullname}
-//           placeholderTextColor={AppStyles.color.grey}
-//           underlineColorAndroid="transparent"
-//         />
-//       </View>
-//       <View style={styles.InputContainer}>
-//         <TextInput
-//           style={styles.body}
-//           placeholder="Phone Number"
-//           onChangeText={setPhone}
-//           value={phone}
-//           placeholderTextColor={AppStyles.color.grey}
-//           underlineColorAndroid="transparent"
-//         />
-//       </View>
-//       <View style={styles.InputContainer}>
-//         <TextInput
-//           style={styles.body}
-//           placeholder="E-mail Address"
-//           onChangeText={setEmail}
-//           value={email}
-//           placeholderTextColor={AppStyles.color.grey}
-//           underlineColorAndroid="transparent"
-//         />
-//       </View>
-//       <View style={styles.InputContainer}>
-//         <TextInput
-//           style={styles.body}
-//           placeholder="Password"
-//           secureTextEntry={true}
-//           onChangeText={setPassword}
-//           value={password}
-//           placeholderTextColor={AppStyles.color.grey}
-//           underlineColorAndroid="transparent"
-//         />
-//       </View>
-//       <Button
-//         containerStyle={[styles.facebookContainer, {marginTop: 50}]}
-//         style={styles.facebookText}
-//         onPress={() => onRegister()}>
-//         Sign Up
-//       </Button>
-//     </View>
-//   );
-// }
 
 const styles = StyleSheet.create({
   container: {
@@ -246,4 +145,3 @@ const styles = StyleSheet.create({
   },
 });
 
-// export default SignupScreen;
